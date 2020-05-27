@@ -10,6 +10,7 @@
 
 4. Create a file `firebase.js` under `src/`. Copy contents from `firebase.example.js` and replace the keys with the keys obtained from firebase.
 
+
 ## Development
 
 In the project directory run: `yarn start`
@@ -17,6 +18,18 @@ In the project directory run: `yarn start`
 ##### Runs the app in the development mode.
 
 ##### Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+
+## Uploading firebase functions and firestore configurations:
+1. `npm install -g firebase-tools` - Install firebase cli tools. 
+2. `firebase login` - log in to the firebase console.
+3. Go to `.firebaserc` - add your project names in place of indus-6c25e. `indus-demo` is alias can also be replaced.
+4. `firebase.json` is already configured to use functions, firestore and hosting.
+
+### To deploy functions:
+1. `firebase deploy --only functions` - Deploy cloud functions.
+2. `firebase deploy --only functions:function_name` - Deploy specific cloud function.
+
 
 ## Build and deployment
 
