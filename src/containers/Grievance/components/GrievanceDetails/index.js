@@ -13,7 +13,6 @@ import { commonStyles } from '../../../../theme/commonStyles';
 import { Paths } from '../../../../routes/routePaths';
 import Loader from '../../../../components/Loader';
 import PreviewImage from '../../../../components/PreviewImage';
-import { SettingsInputComponent } from '@material-ui/icons';
 
 const GrievanceDetails = () => {
   const [loading, setLoading] = useState(true);

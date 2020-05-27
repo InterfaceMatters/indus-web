@@ -3,7 +3,7 @@ import Layout from '../../components/Layout';
 import CustomTabs from '../../components/CustomTabs';
 import { paddingGenerator, marginGenerator } from '../../theme/utils';
 import ProtocolsTable from './components/ProtocolsList';
-import { makeStyles, FormControl, InputBase, Button } from '@material-ui/core';
+import { makeStyles, FormControl, Button } from '@material-ui/core';
 import { colors } from '../../theme/colors';
 import { fetchAllProtocols, updateProtocol } from '../../operations/protocol';
 import { Link, useHistory } from 'react-router-dom';
@@ -26,10 +26,6 @@ const useStyles = makeStyles(theme => ({
     color: colors.common.white
   }
 }));
-
-const handleChange = () => {
-  console.log('change');
-};
 
 const NewProtocol = () => {
   const classes = useStyles();

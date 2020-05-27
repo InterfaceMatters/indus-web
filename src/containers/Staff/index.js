@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Layout from '../../components/Layout';
-import { FormControl, InputBase, Button } from '@material-ui/core';
+import { FormControl, Button } from '@material-ui/core';
 import { colors } from '../../theme/colors';
 import { makeStyles } from '@material-ui/core/styles';
 import StaffTable from './components/StaffTable';
@@ -32,10 +32,6 @@ const useStyles = makeStyles(theme => ({
     color: colors.common.white
   }
 }));
-
-const handleMemberChange = () => {
-  console.log('handleMember change');
-};
 
 const AddMember = ({ handleAdd }) => {
   const classes = useStyles();

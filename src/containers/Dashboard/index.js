@@ -13,7 +13,6 @@ import {
   fetchRecentProtocols
 } from '../../operations/dashboard';
 import Loader from '../../components/Loader';
-import Message from '../../components/Message';
 
 const useStyles = makeStyles(theme => ({
   day: {

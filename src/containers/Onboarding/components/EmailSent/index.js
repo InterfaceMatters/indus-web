@@ -49,6 +49,7 @@ const useStyles = makeStyles(theme => ({
 const EmailSent = () => {
   const classes = useStyles();
 
+  // eslint-disable-next-line no-unused-vars
   const handleResendLink = () => {};
 
   return (

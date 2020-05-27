@@ -1,5 +1,3 @@
-import Message from '../components/Message';
-
 const toShortFormat = dateParam => {
   const monthNames = [
     'Jan',

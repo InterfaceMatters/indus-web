@@ -63,8 +63,6 @@ const OrganisationForm = () => {
 
   const [orgName, setOrgName] = useState('');
 
-  const handleResendLink = () => {};
-
   if (emailSent === true) {
     return <Redirect to="/emailSent" />;
   }
