@@ -45,6 +45,7 @@ const OrganisationForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailSent, setEmailSent] = useState(false);
+  const [orgName, setOrgName] = useState('');
 
   const emailHandler = evt => setEmail(evt.target.value);
   const passwordHandler = evt => setPassword(evt.target.value);
@@ -61,7 +62,6 @@ const OrganisationForm = () => {
     }
   };
 
-  const [orgName, setOrgName] = useState('');
 
   if (emailSent === true) {
     return <Redirect to="/emailSent" />;
