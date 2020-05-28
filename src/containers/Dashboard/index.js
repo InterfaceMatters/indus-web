@@ -126,7 +126,12 @@ const Dashboard = () => {
     <Layout contentStyles={paddingGenerator(['pr-90', 'pl-90', 'pt-112'])}>
       <div style={paddingGenerator(['pl-90'])} className={classes.day}>
         <Typography variant="body1" style={{ fontSize: '14px' }}>
-          {new Date().toDateString()}
+          {new Date().toLocaleDateString('en', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          })}
         </Typography>
       </div>
       <Grid
