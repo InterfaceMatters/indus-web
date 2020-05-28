@@ -1,9 +1,11 @@
 import React from 'react';
 import { Typography, Button } from '@material-ui/core';
-import { marginGenerator, paddingGenerator } from '../../../../theme/utils';
+// import { marginGenerator, paddingGenerator } from '../../../../theme/utils';
 import { makeStyles } from '@material-ui/core/styles';
 import { colors } from '../../../../theme/colors';
 import HeroImage from '../HeroImage';
+import { Paths } from '../../../../routes/routePaths';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -49,13 +51,24 @@ const useStyles = makeStyles(theme => ({
 const EmailSent = () => {
   const classes = useStyles();
 
-  // eslint-disable-next-line no-unused-vars
-  const handleResendLink = () => {};
+  // const handleResendLink = async () => {
+  //   await sendVerificationLink();
+  //   localStorage.removeItem('currentUser');
+  // };
 
   return (
     <div className={classes.root}>
       <HeroImage />
       <div style={{ position: 'relative', flex: 1 }}>
+        <Link to={Paths.Login}>
+          <Button
+            style={{ position: 'absolute', right: '90px', top: '40px' }}
+            disableElevation
+            color="primary"
+            variant="contained">
+            Login
+          </Button>
+        </Link>
         <div
           style={{
             width: '460px',
@@ -84,19 +97,20 @@ const EmailSent = () => {
               account. Please verify to continue
             </Typography>
 
-            <Button
-              style={{
-                width: '100%',
-                fontSize: '16px',
-                ...marginGenerator(['mt-32']),
-                ...paddingGenerator(['pt-17', 'pb-16']),
-                borderRadius: '2px'
-              }}
-              variant="contained"
-              disableElevation
-              color="primary">
-              Resend verification Link
-            </Button>
+            {/*<Button*/}
+            {/*  style={{*/}
+            {/*    width: '100%',*/}
+            {/*    fontSize: '16px',*/}
+            {/*    ...marginGenerator(['mt-32']),*/}
+            {/*    ...paddingGenerator(['pt-17', 'pb-16']),*/}
+            {/*    borderRadius: '2px'*/}
+            {/*  }}*/}
+            {/*  // onClick={() => handleResendLink()}*/}
+            {/*  variant="contained"*/}
+            {/*  disableElevation*/}
+            {/*  color="primary">*/}
+            {/*  Resend verification Link*/}
+            {/*</Button>*/}
           </>
         </div>
       </div>
