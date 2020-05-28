@@ -79,13 +79,14 @@ const fetchAllEmployees = async () => {
     const response = await firestore
       .collection('users')
       .where('orgId', '==', orgId)
-      .where('roleId', '==', ROLE_ID.EMPLOYEE)
+      .where('roleId', '>', ROLE_ID.ADMIN)
       .where('active', '==', true)
       .get();
     return response.docs.map(item => {
       return { ...item.data(), id: item.id, recentViolations: 0 };
     });
   } catch (e) {
+    console.log(e);
     UnableToUpdate();
   }
 };
