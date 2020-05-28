@@ -86,7 +86,6 @@ const fetchAllEmployees = async () => {
       return { ...item.data(), id: item.id, recentViolations: 0 };
     });
   } catch (e) {
-    console.log(e);
     UnableToUpdate();
   }
 };
