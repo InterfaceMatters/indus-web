@@ -173,4 +173,30 @@ const removeEmployee = async uid => {
   }
 };
 
-export { updateEmployeeData, fetchAllEmployees, addEmployee, removeEmployee };
+/**
+ * Fetch logs by employee id
+ * @returns {Promise<{id: *}[]|*>}
+ */
+const fetchLogs = async id => {
+  try {
+    const response = await firestore
+      .collection('dailyLogs')
+      .where('userId', '==', id)
+      .orderBy('createdDate', 'desc')
+      .get();
+
+    return response.docs.map(item => {
+      return { ...item.data(), id: item.id };
+    });
+  } catch (e) {
+    UnableToUpdate();
+  }
+};
+
+export {
+  updateEmployeeData,
+  fetchAllEmployees,
+  addEmployee,
+  removeEmployee,
+  fetchLogs
+};

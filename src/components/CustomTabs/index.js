@@ -8,8 +8,6 @@ import TabPanel from '../TabPanel';
 import PropTypes from 'prop-types';
 
 import { marginGenerator } from '../../theme/utils';
-// import { colors } from '../../theme/colors';
-// import Divider from '@material-ui/core/Divider';
 
 const useStyles = makeStyles(theme => ({
   tabAppbar: {

@@ -7,6 +7,7 @@ const Paths = {
   CreateAccount: '/createAccount',
   EmailSent: '/emailSent',
   Staff: '/staff',
+  Logs: '/logs/:id',
   Dashboard: '/dashboard',
   Protocols: '/protocols',
   Grievance: '/grievance'
