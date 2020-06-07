@@ -2,15 +2,13 @@ import React, { useEffect, useState } from 'react';
 import Layout from '../../../../components/Layout';
 import { paddingGenerator, marginGenerator } from '../../../../theme/utils';
 import { Paper, Typography, Divider, Grid, Button } from '@material-ui/core';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { returnTime, returnDay } from '../../../../utils';
 import {
   fetchGrievanceDetails,
   updateGrievance
 } from '../../../../operations/grievance';
 import ChipsWrapper from '../../../../components/ChipsWrapper';
-import { commonStyles } from '../../../../theme/commonStyles';
-import { Paths } from '../../../../routes/routePaths';
 import Loader from '../../../../components/Loader';
 import PreviewImage from '../../../../components/PreviewImage';
 
