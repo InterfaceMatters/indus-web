@@ -54,10 +54,7 @@ const GrievanceDetails = () => {
               {selectedGrievance.title}
             </Typography>
             <Typography variant="subtitle1" style={{ fontSize: '14px' }}>
-              <Link style={commonStyles.linkStyles} to={Paths.Grievance}>
-                Grievance Report
-              </Link>{' '}
-              > Details
+              Grievance Report > Details
             </Typography>
           </Grid>
           <Grid container direction="row" item xs={3} justify="flex-end">
@@ -152,7 +149,7 @@ const GrievanceDetails = () => {
                   key={index}
                   item
                   style={{
-                    ...marginGenerator(['mt-20', 'mr-8']),
+                    ...marginGenerator(['mt-20', 'mr-8'])
                   }}>
                   <PreviewImage src={attachment} alt={attachment} />
                 </Grid>

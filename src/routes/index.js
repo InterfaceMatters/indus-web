@@ -16,6 +16,7 @@ import PrivateRoute from './PrivateRoute';
 import OrganisationForm from '../containers/Onboarding/components/OrganisationForm';
 import Login from '../containers/Onboarding';
 import EmailSent from '../containers/Onboarding/components/EmailSent';
+import Logs from '../containers/Staff/Logs';
 
 const Routes = ({ user }) => (
   <Switch>
@@ -31,6 +32,12 @@ const Routes = ({ user }) => (
       exact={true}
       path={Paths.Staff}
       component={Staff}
+      user={user}
+    />
+    <PrivateRoute
+      exact={true}
+      path={Paths.Logs}
+      component={Logs}
       user={user}
     />
     <PrivateRoute

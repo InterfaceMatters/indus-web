@@ -6,6 +6,8 @@ import { colors } from '../../../../theme/colors';
 import { marginGenerator } from '../../../../theme/utils';
 import { getAge, getTimeFromSeconds } from '../../../../utils';
 import { makeStyles } from '@material-ui/core/styles';
+import { commonStyles } from '../../../../theme/commonStyles';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(() => {
   return {
@@ -22,6 +24,12 @@ const useStyles = makeStyles(() => {
       position: 'relative',
       width: '100%',
       paddingLeft: '20px'
+    },
+    rowHover: {
+      color: colors.common.black,
+      '&:hover': {
+        color: colors.primary.main
+      }
     }
   };
 });
@@ -51,9 +59,16 @@ const StaffTableRow = ({
   };
 
   return (
-    <TableRow hover tabIndex={-1}>
+    <TableRow tabIndex={-1}>
       <TableCell align="left" scope="row">
-        <Typography style={{ fontWeight: 'bold' }}>{row.name}</Typography>
+        <Typography style={{ fontWeight: 'bold' }}>
+          <Link
+            className={classes.rowHover}
+            style={commonStyles.linkStyles}
+            to={`/logs/${row.id}`}>
+            {row.name}
+          </Link>
+        </Typography>
       </TableCell>
       <TableCell align="left">{`${row.dob ? getAge(row.dob.seconds) : '-'}, ${
         row.gender ? row.gender.charAt(0) : '-'
