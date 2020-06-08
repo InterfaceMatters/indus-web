@@ -44,3 +44,57 @@ exports.updateUser = functions.https.onCall(async ({ uid, data }, context) => {
     throw new functions.https.HttpsError(error.code, error.message);
   }
 });
+
+/**
+ * fetch dashboard chart data
+ * @type {HttpsFunction & Runnable<any>}
+ */
+exports.fetchChartData = functions.https.onCall(async ({ orgId }, context) => {
+  try {
+    const today = new Date(Date.now() - 86400000);
+    today.setHours(0, 0, 0, 0);
+    // const lastWeek = new Date(
+    //   today.getFullYear(),
+    //   today.getMonth(),
+    //   today.getDate() - 7
+    // );
+
+    const firestoreToday = admin.firestore.Timestamp.fromDate(today);
+    // const firestorelastWeek = admin.firestore.Timestamp.fromDate(lastWeek);
+
+    const staffAttendance = await admin
+      .firestore()
+      .collection('dailyLogs')
+      .where('orgId', '==', orgId)
+      .where('createdDate', '>', firestoreToday)
+      .get();
+
+    const healthMeter = await admin
+      .firestore()
+      .collection('users')
+      .where('orgId', '==', orgId)
+      .get();
+
+    const healthy = healthMeter.docs
+      .map(item => {
+        return { ...item.data() };
+      })
+      .filter(item => item.healthStatus && item.healthStatus === 'Healthy');
+
+    const grievanceCount = await admin
+      .firestore()
+      .collection('grievances')
+      .where('orgId', '==', orgId)
+      .where('noted', '==', false)
+      .get();
+
+    return {
+      attendance: staffAttendance.size,
+      healthyCount: healthy.length,
+      totalStaff: healthMeter.size,
+      grievanceCount: grievanceCount.size
+    };
+  } catch (error) {
+    throw new functions.https.HttpsError(error.code, error.message);
+  }
+});

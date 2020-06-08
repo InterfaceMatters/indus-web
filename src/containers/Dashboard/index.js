@@ -10,7 +10,8 @@ import ActiveProposals from './components/ActiveProtocols';
 import AreaChartWrapper from '../../components/Charts/AreaChartWrapper';
 import {
   fetchRecentGrievances,
-  fetchRecentProtocols
+  fetchRecentProtocols,
+  fetchStats
 } from '../../operations/dashboard';
 import Loader from '../../components/Loader';
 
@@ -100,6 +101,14 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [grievanceList, setRecentGrievances] = useState([]);
   const [recentProtocols, setRecentProtocols] = useState([]);
+  const [cards, setCardList] = useState([]);
+
+  const fetchStatistics = async () => {
+    const result = await fetchStats();
+    if (result) {
+      setCards(result.data);
+    }
+  };
 
   const fetchGrievanceList = async () => {
     const result = await fetchRecentGrievances();
@@ -111,8 +120,34 @@ const Dashboard = () => {
     setRecentProtocols(result);
   };
 
+  const setCards = data => {
+    const cardList = [
+      {
+        title: 'Staff Attendance',
+        subtitle: `Updated Today at ${new Date().toLocaleTimeString()}.`,
+        stats: data.attendance || 0,
+        border: { borderLeft: `solid 4px #2196f3` }
+      },
+      {
+        title: 'Healthy meter',
+        subtitle: `${data.healthyCount} out of ${data.totalStaff} Staff Healthy`,
+        stats: `${Math.round(
+          ((data.healthyCount / data.totalStaff) * 10000) / 100
+        )}%`,
+        border: { borderLeft: `solid 4px #66bb6a` }
+      },
+      {
+        title: 'New Grievance Reports',
+        stats: data.grievanceCount || 0,
+        border: { borderLeft: `solid 4px #ffca28` }
+      }
+    ];
+    setCardList(cardList);
+  };
+
   useEffect(() => {
     async function fetchData() {
+      await fetchStatistics();
       await fetchGrievanceList();
       await fetchProtocolList();
       setLoading(false);
@@ -187,26 +222,6 @@ const columns = [
   {
     label: 'Posted',
     size: 2
-  }
-];
-
-const cards = [
-  {
-    title: 'Staff Attendance',
-    subtitle: `Updated Today at ${new Date().toLocaleTimeString()}.`,
-    stats: '32',
-    border: { borderLeft: `solid 4px #2196f3` }
-  },
-  {
-    title: 'Healthy meter',
-    subtitle: '32 out of 33 Staff Healthy',
-    stats: '99.4 %',
-    border: { borderLeft: `solid 4px #66bb6a` }
-  },
-  {
-    title: 'New Grievance Reports',
-    stats: '13',
-    border: { borderLeft: `solid 4px #ffca28` }
   }
 ];
 
