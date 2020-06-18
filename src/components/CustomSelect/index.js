@@ -12,8 +12,7 @@ import { marginGenerator } from '../../theme/utils';
 
 const useStyles = makeStyles(theme => ({
   formControl: {
-    margin: theme.spacing(0, 2, 0, 0),
-    height: 36
+    margin: theme.spacing(0, 2, 0, 0)
   },
   formLabel: {
     display: 'flex',

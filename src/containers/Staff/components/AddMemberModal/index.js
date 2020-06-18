@@ -147,7 +147,8 @@ function AddMemberModal({
         </Typography>
       </DialogTitle>
       <Divider />
-      <DialogContent style={paddingGenerator(['pt-12'])}>
+      <DialogContent
+        style={{ ...paddingGenerator(['pt-12']), overflowX: 'hidden' }}>
         <Grid container>
           <FormControl style={{ width: '100%' }}>
             <Typography variant="subtitle2">Name *</Typography>
