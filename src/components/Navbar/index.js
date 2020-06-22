@@ -86,7 +86,7 @@ function Navbar() {
         <Toolbar style={{ flexGrow: 1 }} disableGutters variant="dense">
           <div className={classes.logoContainer}>
             <NavLink
-              to="/"
+              to="/dashboard"
               style={{
                 textDecoration: 'none',
                 color: 'inherit',
