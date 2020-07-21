@@ -184,7 +184,7 @@ const Dashboard = () => {
         spacing={2}
         justify={'space-between'}>
         {chartData.map((chart, index) => (
-          <Grid key={index} item xs>
+          <Grid key={index} item xs={4}>
             <div
               style={{
                 backgroundColor: colors.common.white,

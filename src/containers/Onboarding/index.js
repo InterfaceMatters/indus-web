@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: colors.common.white,
     fontSize: '16px',
     '& input': {
-      padding: '19px 0 18px 0'
+      padding: '19px 0 18px 12px'
     },
     '& input::placeholder': {
       opacity: 1,
@@ -76,7 +76,15 @@ const Login = () => {
             left: '50%',
             transform: 'translate(-50%,-50%)'
           }}>
-          <div>
+          <form
+            onSubmit={async e => {
+              e.preventDefault();
+              if (!email || !password) {
+                GenericErrorForm();
+                return;
+              }
+              await handleLogin({ email, password });
+            }}>
             <Typography
               style={{ fontWeight: 'normal', lineHeight: 1.5 }}
               variant="h1">
@@ -92,6 +100,7 @@ const Login = () => {
               style={{ width: '100%', ...marginGenerator(['mt-32']) }}
               variant="outlined">
               <InputBase
+                style={{ paddingLeft: 0 }}
                 onChange={evt => emailHandler(evt)}
                 className={classes.loginInput}
                 placeholder="Email Address *"
@@ -101,6 +110,7 @@ const Login = () => {
               style={{ width: '100%', ...marginGenerator(['mt-24']) }}
               variant="outlined">
               <InputBase
+                style={{ paddingLeft: 0 }}
                 className={classes.loginInput}
                 type="password"
                 placeholder="Password *"
@@ -115,19 +125,20 @@ const Login = () => {
                 ...marginGenerator(['mt-32']),
                 ...paddingGenerator(['pt-19', 'pb-18'])
               }}
+              type="submit"
               variant="contained"
               disableElevation
               onClick={async () => {
-                if(!email || !password) {
+                if (!email || !password) {
                   GenericErrorForm();
                   return;
                 }
-                await handleLogin({ email, password })
+                await handleLogin({ email, password });
               }}
               color="primary">
               Login
             </Button>
-          </div>
+          </form>
         </div>
       </div>
     </div>
