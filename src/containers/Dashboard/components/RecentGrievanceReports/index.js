@@ -53,26 +53,30 @@ const RecentGrievanceReports = ({ rows, columns }) => {
             justify={'space-between'}
             style={{ height: '81px', ...paddingGenerator(['pt-20', 'pb-20']) }}
             key={index}>
-            <Grid container direction="column" item justify="flex-start" xs={9}>
-              <Typography
-                align="left"
-                variant={'body1'}
-                style={{ fontWeight: 'bold' }}>
-                <Link
-                  className={classes.rowHover}
-                  style={{
-                    textDecoration: 'none'
-                  }}
-                  to={`/grievance/details/${row.id}`}>
-                  {row.title}
-                </Link>
-              </Typography>
-              <Typography
-                variant="subtitle2"
-                align="left"
-                style={paddingGenerator(['pt-12'])}>
-                {trimString(row.description)}
-              </Typography>
+            <Grid container direction="row" item justify="flex-start" xs={9}>
+              <Grid item xs={12}>
+                <Typography
+                  align="left"
+                  variant={'body1'}
+                  style={{ fontWeight: 'bold' }}>
+                  <Link
+                    className={classes.rowHover}
+                    style={{
+                      textDecoration: 'none'
+                    }}
+                    to={`/grievance/details/${row.id}`}>
+                    {row.title}
+                  </Link>
+                </Typography>
+              </Grid>
+              <Grid item xs={12}>
+                <Typography
+                  variant="subtitle2"
+                  align="left"
+                  style={paddingGenerator(['pt-12'])}>
+                  {trimString(row.description)}
+                </Typography>
+              </Grid>
             </Grid>
             <Grid container direction="row" item xs={2}>
               <Grid container item direction="column">
@@ -85,13 +89,6 @@ const RecentGrievanceReports = ({ rows, columns }) => {
                   {returnTime(row.createdDate)}
                 </Typography>
               </Grid>
-              {/*<Grid xs={6} item container>*/}
-              {/*  <IconMenu*/}
-              {/*    handleMenuItemClick={handleMenuItemClick}*/}
-              {/*    icon={<MoreHoriz style={{ color: colors.common.black }} />}*/}
-              {/*    menuItems={['1', '2', '3']}*/}
-              {/*  />*/}
-              {/*</Grid>*/}
             </Grid>
           </Grid>
           <Divider />

@@ -10,7 +10,6 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'flex-start',
     justifyContent: 'center',
-    flexDirection: 'column',
     backgroundColor: colors.common.white,
     border: `solid 1px ${colors.grey[200]}`
   }
@@ -25,6 +24,7 @@ const DashboardCharts = ({ title, subtitle, stats, border }) => {
         container
         alignItems="center"
         style={{ ...border }}
+        direction="row"
         className={classes.statContainer}>
         <Grid
           container
@@ -39,7 +39,12 @@ const DashboardCharts = ({ title, subtitle, stats, border }) => {
             <Typography variant="subtitle1">{subtitle}</Typography>
           </Grid>
         </Grid>
-        <Grid item justify="center" container xs={3}>
+        <Grid
+          item
+          style={paddingGenerator(['pt-26', 'pb-26'])}
+          justify="center"
+          container
+          xs={3}>
           <Typography variant="body1" style={{ fontSize: '20px' }}>
             {stats}
           </Typography>
